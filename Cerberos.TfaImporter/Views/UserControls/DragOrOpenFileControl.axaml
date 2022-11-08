@@ -1,0 +1,23 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Cerberos.TfaImporter.Views.UserControls.DragOrOpenFileControl">
+    <StackPanel Orientation="Horizontal"
+                Margin="0,16,0,0"
+                HorizontalAlignment="Center"
+                Spacing="16">
+            <Border BorderBrush="White" Padding="16"
+                    DragDrop.AllowDrop="True" >
+                <Grid Height="200" HorizontalAlignment="Stretch">
+                    <Grid.Background>
+                        <ImageBrush Source="/Assets/drag-and-drop.png" />
+                    </Grid.Background>
+                    <StackPanel VerticalAlignment="Bottom" Margin="0 -20 0 0">
+                        <TextBlock HorizontalAlignment="Stretch" Name="DropState">Choose a barcode image or drag it here</TextBlock>
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </StackPanel>
+</UserControl>
