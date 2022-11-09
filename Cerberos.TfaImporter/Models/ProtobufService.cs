@@ -21,7 +21,7 @@ public class ProtobufService
         return mp.OtpParameters.Select(otpParam => 
             new DecodedTokenDto(
                 (TokenType)(int)otpParam.Type,
-                Base32.Crockford.Encode(otpParam.Secret.ToByteArray(), padding: true),
+                Base32.Rfc4648.Encode(otpParam.Secret.ToByteArray(), padding: false),
                 otpParam.Name,
                 otpParam.Issuer, 
                 (otpParam.Digits == MigrationPayload.Types.DigitCount.Eight) ? 8  : 6,
@@ -41,9 +41,10 @@ public class ProtobufService
             queryParams.Add("counter", decodedToken.Counter.ToString());
         else if(decodedToken.Type == TokenType.Totp && decodedToken.Period.HasValue)
             queryParams.Add("period", decodedToken.Period.ToString());
+        
+        var result = $"otpauth://{(decodedToken.Type == TokenType.Totp ? "totp" : "hotp")}/{HttpUtility.UrlEncode(decodedToken.Name)}?{ToQueryString(queryParams)}";
+        return result;
 
-        return
-            $"otpauth://{(decodedToken.Type == TokenType.Totp ? "totp" : "hotp")}/{HttpUtility.UrlEncode(decodedToken.Name)}/?{ToQueryString(queryParams)}";
     }
 
     public async Task<Tuple<string, IEnumerable<DecodedTokenDto>>> ReceiveTokensAsync(Stream barcodeStream)

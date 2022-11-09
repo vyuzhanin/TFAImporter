@@ -5,10 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:dto="clr-namespace:Cerberos.TfaImporter.DTO"
         xmlns:userControls="clr-namespace:Cerberos.TfaImporter.Views.UserControls"
-        mc:Ignorable="d" d:DesignWidth="700" d:DesignHeight="450"
+        mc:Ignorable="d" Width="900" Height="450"
         x:Class="Cerberos.TfaImporter.Views.MainWindow"
-        Icon="/Assets/avalonia-logo.ico"
-        Title="Local Barcode Scanner">
+        Title="Local Barcode Scanner" WindowStartupLocation="CenterScreen">
 
     <Design.DataContext>
         <vm:MainWindowViewModel />

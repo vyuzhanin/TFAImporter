@@ -1,19 +1,20 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net6.0</TargetFramework>
+	<ApplicationIcon>../bundle/Icon1024.ico</ApplicationIcon>
     <Nullable>enable</Nullable>
 	<!--Avalonia doesen't support TrimMode=link currently,but we are working on that https://github.com/AvaloniaUI/Avalonia/issues/6892 -->
 	<TrimMode>copyused</TrimMode>
 	<BuiltInComInteropSupport>true</BuiltInComInteropSupport>
-	<ApplicationVersion>0.0.1</ApplicationVersion>
+	<ApplicationVersion>0.0.2</ApplicationVersion>
 	<Title>2FA Importer</Title>
 	<Authors>Vladimir Yuzhanin</Authors>
 	<Description>Provides two factor authentication (2FA) accounts importing from services like google authenticator</Description>
 	<Copyright>GNU GENERAL PUBLIC LICENSE v3</Copyright>
 	<PackageLicenseUrl>https://www.gnu.org/licenses/gpl-3.0.txt</PackageLicenseUrl>
-	<AssemblyVersion>0.0.1</AssemblyVersion>
-	<FileVersion>0.0.1</FileVersion>
+	<AssemblyVersion>0.0.2</AssemblyVersion>
+	<FileVersion>0.0.2</FileVersion>
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="Models\" />
