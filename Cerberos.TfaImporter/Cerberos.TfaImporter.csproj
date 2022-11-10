@@ -43,4 +43,9 @@
 	<PackageReference Include="ZXing.Net" Version="0.16.8" />
 	<PackageReference Include="ZXing.Net.Bindings.ImageSharp.V2" Version="0.16.14" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\README.md">
+      <Link>README.md</Link>
+    </Content>
+  </ItemGroup>
 </Project>
