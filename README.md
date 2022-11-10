@@ -20,7 +20,7 @@ Each script builds the project to the `/publish/<platform-name>` folder.
 
 ## Releases
 
-Check for releases section to to get the latest build. For macOS users the application isn't notarized so after you will put 2FAImporter to Aplications folder run the following command:
+Check for [releases section](https://github.com/vyuzhanin/TFAImporter/releases/latest) to to get the latest build. For macOS users the application isn't notarized so after you will put 2FAImporter to Aplications folder run the following command:
 ```shell
 $sudo xattr -rd com.apple.quarantine /Applications/2FAImporter.app
 ```
