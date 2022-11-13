@@ -2,6 +2,9 @@
 
 Provides two factor authentication (2FA) accounts importing from services like Google Authenticator
 
+![image](https://user-images.githubusercontent.com/596514/201524251-6df6e7a2-f6c2-4bbc-b16d-51ac76e73c6a.png)
+![image](https://user-images.githubusercontent.com/596514/201524255-ec9d7bab-78ee-4b51-923c-8054f418aa45.png)
+
 ## Pre-Requisites
 
 The application has developed on [.net 6.0](https://dotnet.microsoft.com/en-us/download/dotnet/6.0) which requires to build the project from source code.
