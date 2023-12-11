@@ -12,13 +12,13 @@
     <Design.DataContext>
         <vm:MainWindowViewModel />
     </Design.DataContext>
-    <StackPanel>
+    <StackPanel HorizontalAlignment="Stretch">
         <userControls:DragOrOpenFileControl FilePath="{Binding BarcodeImagePath}" FileLoaded="DragOrOpenFileControl_OnFileLoaded" />
        
         <TextBox AcceptsReturn="True" Text="{Binding DecodedResult}" Height="100" IsReadOnly="True" />
 
         <DataGrid Name="MyDataGrid"
-                  Items="{Binding ExtractedTokens}" AutoGenerateColumns="False">
+                  Items="{Binding ExtractedTokens}" AutoGenerateColumns="False" VerticalScrollBarVisibility="Visible" VerticalAlignment="Stretch">
 
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Type" Binding="{Binding Type}" IsReadOnly="True" />
@@ -38,6 +38,7 @@
                 <DataGridTextColumn Header="Issuer" Binding="{Binding Issuer}" IsReadOnly="True" />
                 <DataGridTextColumn Header="Algorithm" Binding="{Binding Alg}" IsReadOnly="True" />
                 <DataGridTextColumn Header="Digits" Binding="{Binding Digits}" IsReadOnly="True" />
+                <DataGridTextColumn Header="Period (sec.)" Binding="{Binding Period}" IsReadOnly="True" />
                 <DataGridTextColumn Header="Counter" Binding="{Binding Counter}" IsReadOnly="True" />
                 <DataGridTemplateColumn Header="QR Code">
                     <DataGridTemplateColumn.CellTemplate>

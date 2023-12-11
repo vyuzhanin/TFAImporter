@@ -7,7 +7,7 @@
 	<!--Avalonia doesen't support TrimMode=link currently,but we are working on that https://github.com/AvaloniaUI/Avalonia/issues/6892 -->
 	<TrimMode>copyused</TrimMode>
 	<BuiltInComInteropSupport>true</BuiltInComInteropSupport>
-	<ApplicationVersion>0.0.2</ApplicationVersion>
+	<ApplicationVersion>0.0.3</ApplicationVersion>
 	<Title>2FA Importer</Title>
 	<Authors>Vladimir Yuzhanin</Authors>
 	<Description>Provides two factor authentication (2FA) accounts importing from services like google authenticator</Description>

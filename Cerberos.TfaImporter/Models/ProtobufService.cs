@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Web;
 using Cerberos.TfaImporter.DTO;
 using Cerberos.TfaImporter.DTO.Proto;
+using Cerberos.TfaImporter.Parsers;
 using SimpleBase;
 
 namespace Cerberos.TfaImporter.Models;
@@ -52,8 +53,13 @@ public class ProtobufService
         var barcodeResult = await _barcodeService.DecodeBarcodeAsync(barcodeStream);
 
         var encodedUrl = barcodeResult?? string.Empty;
+        
+        if(string.IsNullOrWhiteSpace(encodedUrl))
+            throw new InvalidOperationException("Decoded value is empty or an invalid format.");
+        
+        Uri uri = new Uri(encodedUrl);
 
-        if (!string.IsNullOrWhiteSpace(encodedUrl) && encodedUrl.StartsWith("otpauth-migration://offline"))
+        if (uri.Scheme == OtpAuthParser.OtpauthMigrationSchemaName)
         {
             var query = HttpUtility.UrlDecode(encodedUrl);
             var parsed = HttpUtility.ParseQueryString(query);
@@ -72,6 +78,13 @@ public class ProtobufService
             }
             throw new InvalidOperationException("Decoded");
         }
+        else if (uri.Scheme == OtpAuthParser.OtpauthSchemaName)
+        {
+            var result = OtpAuthParser.Parse(encodedUrl);
+            
+            return Tuple.Create<string, IEnumerable<DecodedTokenDto>>(encodedUrl, Enumerable.Repeat(result, 1));
+        }
+
         throw new InvalidOperationException("Decoded value is empty or has an invalid format.");
 
     }

@@ -30,4 +30,25 @@ public static class Extensions
             .GetCustomAttribute<DisplayAttribute>()
             .Name;
     }
+
+    /// <summary>
+    /// Parse string value to specified <see cref="TEnum"/>
+    /// </summary>
+    /// <param name="souce">source value</param>
+    /// <param name="defaultValue">default enum result if source value is not found.</param>
+    /// <typeparam name="TEnum">specified enum</typeparam>
+    /// <returns></returns>
+    public static TEnum ParseDisplayNameToEnum<TEnum>(this string souce, TEnum defaultValue) where TEnum : struct, Enum
+    {
+        var enumValues = Enum.GetValues<TEnum>();
+        
+        if(!enumValues.Any(obj =>
+               obj.GetEnumDisplayName().Equals(souce, StringComparison.CurrentCultureIgnoreCase)))
+            return defaultValue;
+
+        var result = enumValues.First(obj =>
+            obj.GetEnumDisplayName().Equals(souce, StringComparison.CurrentCultureIgnoreCase));
+
+        return result;
+    }
 }
